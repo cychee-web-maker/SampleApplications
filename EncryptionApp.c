@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <openssl/evp.h>
+#include "SHA3_test.h"
 
 // Function to encrypt using AES-192-GCM
 void encrypt_AES192_GCM(const unsigned char *plaintext, const unsigned char *key, const unsigned char *iv,
@@ -50,6 +51,9 @@ int main() {
     // Buffers for encrypted & decrypted text
     unsigned char ciphertext[128], decryptedtext[128], tag[16];
 
+    const char *message = "Hello, SHA-3!";
+    unsigned char hash[32]; // SHA3-256 produces a 32-byte hash
+    
     // Encrypt the plaintext
     encrypt_AES192_GCM(plaintext, key, iv, ciphertext, tag);
     printf("Encrypted text: %s\n", ciphertext);
@@ -62,6 +66,15 @@ int main() {
     else
         printf("Decryption failed: Authentication error!\n");
 
+    // Test SHA3 hashing
+    printf("Testing SHA3-256 hashing now...\n");
+    sha3_256(message, hash);
+    
+    printf("SHA3-256 Hash: ");
+    for (int i = 0; i < 32; i++)
+        printf("%02x", hash[i]);
+    printf("\n");
+    
     return 0;
 }
 
