@@ -4,6 +4,7 @@
 
 void sha256_hash(const char *input, unsigned char *output) {
     // Just add comment
+    // Comment to test CI/CD scan for this file changed.
     SHA256_CTX ctx;
     SHA256_Init(&ctx);
     SHA256_Update(&ctx, input, strlen(input));
