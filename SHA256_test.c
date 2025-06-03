@@ -3,6 +3,7 @@
 #include <openssl/sha.h>
 
 void sha256_hash(const char *input, unsigned char *output) {
+    // Just add comment
     SHA256_CTX ctx;
     SHA256_Init(&ctx);
     SHA256_Update(&ctx, input, strlen(input));
