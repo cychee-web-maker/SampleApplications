@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-Wall -Wextra -std=c11
 TARGET=EncryptionApp
 LDFLAGS=-lssl -lcrypto
-SRC=EncryptionApp.c SHA3_test.c
+SRC=EncryptionApp.c SHA3_test.c SHA256_test.c
 OBJ=$(SRC:.c=.o)
 
 all: $(TARGET)
